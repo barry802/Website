@@ -1,0 +1,151 @@
+<?php
+//connecting to lamp server
+error_reporting(E_ALL ^ E_NOTICE);
+//home page edit
+$webserver= 'localhost';
+$user='blivingstone01';
+$password='rnw5psd2rjlb92qs';
+$database='blivingstone01';
+mysql_connect($webserver, $user, $password);
+@mysql_select_db($database) or die("unable to connect");
+@homepagetext;
+
+$query = "SELECT * FROM Homepage";
+$display = mysql_query($query)or die(mysql_error());
+
+$titledata = mysql_result($display, 0, "title");
+echo $titledata;
+
+$homepagewelcome =mysql_result($display,0, "welcome");
+echo $welcome;
+
+$subdata = mysql_result($display, 0, "subtitle");
+echo $subdata;
+
+$homepageimage = mysql_result($display, 0, "imagepath");
+echo $homepageimage;        
+
+$homepage2ndtitle = mysql_result($display, 0, "subtitle");
+echo $homepage2ndtitle;
+
+$homepagecat1 = mysql_result($display, 0, "cat1");
+echo $homepagecat1;
+
+$homepagecat2 = mysql_result($display , 0, "cat2");
+echo $homepagecat2;
+
+$homepagecat3 =mysql_result($display, 0 , "cat3");
+echo $homepagecat3;
+        
+?>
+
+<!DOCTYPE html>
+<!--
+
+Name       : Barry Livingstone
+Student No: 40106041 
+
+-->
+<html>
+<head>
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<!--
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+-->
+
+</head>
+<body>
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">Charity</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="active"><a href="#" accesskey="1" title="">Homepage</a></li>
+				<li><a href="#" accesskey="2" title="">Shop</a></li>
+				<li><a href="#" accesskey="3" title="">About Us</a></li>
+				<li><a href="#" accesskey="4" title="">Contact Us</a></li>
+                                <li>"login"</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="staff" class="container">
+		<div class="title">
+                    
+                    
+                  <?php   echo "<h2>$titledata</h2>"  ?>
+                    
+			<?php echo "<span> $homepagesubtitle</span>" ?>
+                        </div>
+            <?php echo "<p> $homepagewelcome; </p>" ?>
+		<div class="boxA"> 
+                    <?php 
+                    echo "<img src='images/$homepageimage;' width='300' height='300' />"; 
+                    ?> 
+                </div> 
+		<div class="boxB">
+                    <?php 
+                    echo "<img src='images/$homepageimage2' width='300' height='300' />"; 
+                    ?>
+                </div>
+		<div class="boxC">
+                    <?php 
+                    echo "<img src='images/$homepageimage3' width='300' height='300' />"; 
+                    ?>
+                </div>
+	</div>
+    
+    <div class="title">
+        <div id="wrapper">
+            <div class="title">
+            
+       <?php echo"<h2>$homepage2ndtitle;</h2>" ?>
+                </div>
+    
+	<div id="page" class="container">
+		<div class="boxA">
+			<?php echo "<h2><br />
+				<span>$homepagecat1;</span></h2>" ?>
+			
+		<a HREF="Funiture.php" class="boxA">
+               <?php 
+                    echo "<img src='images/$homepageshopimg1' width='300' height='300' />"; 
+                    ?>
+                </a>	
+				
+		</div>
+		<div class="boxB">
+			<?php echo "<h2><br /> <span>$homepagecat2</span></h2>" ?>
+		<a  HREF="clothes.php" class="boxA"> 
+                    <?php 
+                    echo "<img src='images/$homepageshopimg2' width='300' height='300' />"; 
+                    ?>
+                </a>	
+				
+		</div>
+		<div class="boxC">
+			<?php echo "<h2><br />
+				<span>$homepagecat3;</span></h2>" ?>
+		<a HREF="Toys.php" class="boxA">
+                    <?php 
+                    echo "<img src='images/$homepageshopimg3' width='300' height='300' />"; 
+                    
+                    //$i++;
+                    //}
+                    ?>
+                </a>
+		</div>
+	</div>
+
+<div id="welcome-wrapper">
+	
+<div id="copyright" class="container">
+	<p>&copy; Charity Shop. All rights reserved.</p>
+</div>
+</body>
+</html>
+
+
